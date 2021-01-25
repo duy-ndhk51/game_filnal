@@ -6,16 +6,11 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "Textures.h"
-
-
 #include "Mario.h"
-#include "Brick.h"
-#include "Goomba.h"
-
 #include "PlayScence.h"
 
-#define WINDOW_CLASS_NAME L"SampleWindow"
-#define MAIN_WINDOW_TITLE L"SAMPLE 05 - SCENCE MANAGER"
+#define WINDOW_CLASS_NAME L"16520292"
+#define MAIN_WINDOW_TITLE L"16520292 - NGUYEN DZOAN HOANG KHANH DUY"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(255, 255, 200)
 #define SCREEN_WIDTH 500
@@ -38,18 +33,11 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-/*
-	Update world status for this frame
-	dt: time period between beginning of last frame and beginning of this frame
-*/
 void Update(DWORD dt)
 {
 	CGame::GetInstance()->GetCurrentScene()->Update(dt);
 }
 
-/*
-	Render a frame 
-*/
 void Render()
 {
 	LPDIRECT3DDEVICE9 d3ddv = game->GetDirect3DDevice();
@@ -168,7 +156,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	game->Load(L"mario-sample.txt");
 
-	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
 	Run();
 

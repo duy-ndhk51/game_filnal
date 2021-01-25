@@ -5,7 +5,6 @@
 #include "Utils.h"
 #include "Textures.h"
 #include "Sprites.h"
-#include "Portal.h"
 
 using namespace std;
 
@@ -28,12 +27,6 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define SCENE_SECTION_OBJECTS	6
 
 #define OBJECT_TYPE_MARIO	0
-#define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_GOOMBA	2
-#define OBJECT_TYPE_KOOPAS	3
-
-#define OBJECT_TYPE_PORTAL	50
-
 #define MAX_SCENE_LINE 1024
 
 
@@ -152,26 +145,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO:
-		if (player!=NULL) 
-		{
-			DebugOut(L"[ERROR] MARIO object was created before!\n");
-			return;
-		}
 		obj = new CMario(x,y); 
-		player = (CMario*)obj;  
 
 		DebugOut(L"[INFO] Player object created!\n");
-		break;
-	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
-	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	case OBJECT_TYPE_PORTAL:
-		{	
-			float r = atof(tokens[4].c_str());
-			float b = atof(tokens[5].c_str());
-			int scene_id = atoi(tokens[6].c_str());
-			obj = new CPortal(x, y, r, b, scene_id);
-		}
 		break;
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
@@ -287,42 +263,8 @@ void CPlayScene::Unload()
 
 void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
-	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
-
-	//CMario *mario = ((CPlayScene*)scence)->GetPlayer();
-	//switch (KeyCode)
-	//{
-	//case DIK_SPACE:
-	//	mario->SetState(MARIO_STATE_JUMP);
-	//	break;
-	//case DIK_A: 
-	//	mario->Reset();
-	//	break;
-	//}
 }
 
 void CPlayScenceKeyHandler::KeyState(BYTE *states)
 {
-	//CGame *game = CGame::GetInstance();
-	//CMario *mario = ((CPlayScene*)scence)->GetPlayer();
-
-	//// disable control key when Mario die 
-	//if (mario->GetState() == MARIO_STATE_DIE) return;
-	//if (game->IsKeyDown(DIK_RIGHT)) {
-	//	mario->SetState(MARIO_STATE_WALKING_RIGHT);
-	//}
-	//else if (game->IsKeyDown(DIK_LEFT)) {
-	//	mario->SetState(MARIO_STATE_WALKING_LEFT);
-	//}
-	//else if (game->IsKeyDown(DIK_UP)) {
-	//	mario->SetState(MARIO_STATE_WALKING_UP);
-	//}
-	//else if (game->IsKeyDown(DIK_DOWN)) {
-	//	mario->SetState(MARIO_STATE_WALKING_DOWN);
-	//}
-	//else {
-	//	//mario->SetState(MARIO_STATE_IDLE);
-	//	mario->SetSpeed(0, 0);
-	//}
-
 }
